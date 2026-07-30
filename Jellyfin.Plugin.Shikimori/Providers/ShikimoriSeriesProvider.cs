@@ -34,14 +34,14 @@ namespace Jellyfin.Plugin.Shikimori.Providers
                 var aidResult = await _shikimoriClientManager.GetAnimeAsync(id, cancellationToken).ConfigureAwait(false);
                 if (aidResult != null)
                 {
-                    result.Add(aidResult.ToSearchResult());
+                    result.Add(PreserveProviderIds(aidResult.ToSearchResult(), searchInfo.ProviderIds));
                 }
             }
 
             if (!String.IsNullOrEmpty(searchInfo.Name))
             {
                 var searchResult = await _shikimoriClientManager.SearchAnimesAsync(searchInfo.Name, cancellationToken, AnimeType.Tv, searchInfo.Year).ConfigureAwait(false);
-                result.AddRange(searchResult);
+                result.AddRange(searchResult.Select(item => PreserveProviderIds(item, searchInfo.ProviderIds)));
             }
 
             return result;
@@ -75,6 +75,7 @@ namespace Jellyfin.Plugin.Shikimori.Providers
 
                 result.HasMetadata = true;
                 result.Item = anime.ToSeries();
+                result.Item.ProviderIds = ProviderIdMerger.Merge(info.ProviderIds, anime.id.ToString());
                 result.Provider = ShikimoriPlugin.ProviderName;
 
                 result.ResultLanguage = "ru";
@@ -83,6 +84,17 @@ namespace Jellyfin.Plugin.Shikimori.Providers
             }
 
             return result;
+        }
+
+        private static RemoteSearchResult PreserveProviderIds(
+            RemoteSearchResult searchResult,
+            IReadOnlyDictionary<string, string>? existingProviderIds)
+        {
+            searchResult.ProviderIds = ProviderIdMerger.Merge(
+                existingProviderIds,
+                searchResult.ProviderIds[ShikimoriPlugin.ProviderId]);
+
+            return searchResult;
         }
 
         public async Task<HttpResponseMessage> GetImageResponse(string url, CancellationToken cancellationToken)

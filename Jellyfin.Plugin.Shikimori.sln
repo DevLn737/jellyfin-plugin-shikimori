@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfin.Plugin.Shikimori", "Jellyfin.Plugin.Shikimori\Jellyfin.Plugin.Shikimori.csproj", "{EB66E541-9350-43EA-A72F-928A84436C46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfin.Plugin.Shikimori.Tests", "Jellyfin.Plugin.Shikimori.Tests\Jellyfin.Plugin.Shikimori.Tests.csproj", "{86F65AE3-A89E-4189-8206-C6531C631195}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{EB66E541-9350-43EA-A72F-928A84436C46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB66E541-9350-43EA-A72F-928A84436C46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB66E541-9350-43EA-A72F-928A84436C46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F65AE3-A89E-4189-8206-C6531C631195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F65AE3-A89E-4189-8206-C6531C631195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F65AE3-A89E-4189-8206-C6531C631195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F65AE3-A89E-4189-8206-C6531C631195}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
