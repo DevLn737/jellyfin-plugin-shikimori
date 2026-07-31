@@ -16,7 +16,7 @@
 1. Зайти в Администрирование -> Панель управления -> Плагины -> Управление репозиториями -> Новый репозиторий.
 2. Ввести название, в поле "URL репозитория" ввести:
 ```
-https://raw.githubusercontent.com/te9c/jellyfin-plugin-shikimori/main/manifest.json
+https://raw.githubusercontent.com/DevLn737/jellyfin-plugin-shikimori/main/manifest.json
 ```
 3. Установить плагин через каталог.
 
