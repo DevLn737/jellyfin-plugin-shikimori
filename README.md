@@ -22,11 +22,33 @@ https://raw.githubusercontent.com/DevLn737/jellyfin-plugin-shikimori/main/manife
 
 # Сборка
 
-1. Установить [.NET9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+1. Установить [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 2. Склонировать этот репозиторий
 3. Скомпилировать плагин следующей командой:
 ```bash
-dotnet publish --configuration Release --output bin
+dotnet publish Jellyfin.Plugin.Shikimori/Jellyfin.Plugin.Shikimori.csproj --configuration Release --output artifacts/publish
 ```
 4. Создать директорию `shikimori` в папке с плагинами джелифина (Она находится в [основной директории jellyfin](https://jellyfin.org/docs/general/administration/configuration/#data-directory))
-5. Переместить dll `Jellyfin.Plugin.Shikimori.dll` и `Newtonsoft.Json.dll` из директории `bin` в `shikimori`, созданной в предыдущем шаге.
+5. Переместить `Jellyfin.Plugin.Shikimori.dll`, `Newtonsoft.Json.dll` и `meta.json` из `artifacts/publish` в созданную директорию. Остальные DLL из publish принадлежат серверу и не входят в пакет плагина.
+
+# Совместимость 12.2
+
+Версия 6.0.0.0 предназначена для Jellyfin 12.2 и .NET 10. Она сохраняет GUID,
+ключи настроек, имя `Jellyfin.Plugin.Shikimori.xml`, поиск по Shikimori ID и
+сохранение идентификаторов других провайдеров из версии 5.0.1.0. Перед заменой
+бинарников остановить Jellyfin; сохранить файл настроек в `plugins/configurations`
+и убрать старую директорию бинарников Shikimori.
+
+Публичный `manifest.json` содержит только опубликованные релизы. Локальную сборку
+6.0.0.0 устанавливать из проверенного пакета. Добавлять её в публичный каталог
+можно после публикации ZIP и проверки его адреса и контрольной суммы.
+
+Проверенные команды тестирования:
+
+```bash
+dotnet test Jellyfin.Plugin.Shikimori.sln --configuration Release
+```
+
+Тесты проверяют восстановление старых XML-настроек, поиск ID, неизменность GUID и
+имени настроек, обработку метаданных и результатов поиска фильмов/сериалов без
+потери TMDb, TVDB, AniList, AniDB, IMDb и пользовательских идентификаторов.

@@ -1,15 +1,16 @@
 ---
 name: "Shikimori"
 guid: "7edb2a28-5b8a-4fe8-ae11-d941315eb862"
-version: "5.0.1.0"
-targetAbi: "10.11.0.0"
-framework: "net9.0"
-owner: "te9c"
+version: "6.0.0.0"
+targetAbi: "12.2.0.0"
+framework: "net10.0"
+owner: "DevLn737"
 overview: "Metadata provider for Shikimori"
 description: "Adds metadata for anime tv and movies"
 category: "Anime"
 artifacts:
 - "Jellyfin.Plugin.Shikimori.dll"
 - "Newtonsoft.Json.dll"
+- "meta.json"
 changelog: >
-  Preserve external provider IDs when applying Shikimori metadata
+  Support Jellyfin 12.2 and .NET 10 while preserving plugin settings and external provider IDs
