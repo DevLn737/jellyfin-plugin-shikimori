@@ -33,8 +33,8 @@ namespace Jellyfin.Plugin.Shikimori
             }
         }
 
-        public override string Name => "Shikimori";
-        public override Guid Id => Guid.Parse("7edb2a28-5b8a-4fe8-ae11-d941315eb862");
+        public override string Name => "Shikimori Next";
+        public override Guid Id => Guid.Parse("42730b4b-b30e-45dc-bee0-8f351eadb690");
         
         public static ShikimoriPlugin? Instance { get; private set; }
         public IEnumerable<PluginPageInfo> GetPages()
