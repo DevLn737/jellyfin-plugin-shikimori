@@ -2,12 +2,12 @@
     "category": "Anime",
     "changelog": "Support Jellyfin 12.2 and .NET 10 while preserving plugin settings and external provider IDs",
     "description": "Adds metadata for anime tv and movies",
-    "guid": "7edb2a28-5b8a-4fe8-ae11-d941315eb862",
-    "name": "Shikimori",
+    "guid": "42730b4b-b30e-45dc-bee0-8f351eadb690",
+    "name": "Shikimori Next",
     "overview": "Metadata provider for Shikimori",
     "owner": "DevLn737",
     "status": "Active",
     "targetAbi": "12.2.0.0",
     "timestamp": "2026-10-11T12:18:28Z",
-    "version": "6.0.0.0"
+    "version": "6.1.0.0"
 }

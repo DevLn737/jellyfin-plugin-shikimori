@@ -17,9 +17,9 @@ namespace Jellyfin.Plugin.Shikimori.Tests
         {
             using var fixture = new PluginFixture();
 
-            Assert.Equal(Guid.Parse("7edb2a28-5b8a-4fe8-ae11-d941315eb862"), fixture.Plugin.Id);
-            Assert.Equal(new Version(6, 0, 0, 0), fixture.Plugin.Version);
-            Assert.Equal("Shikimori", fixture.Plugin.Name);
+            Assert.Equal(Guid.Parse("42730b4b-b30e-45dc-bee0-8f351eadb690"), fixture.Plugin.Id);
+            Assert.Equal(new Version(6, 1, 0, 0), fixture.Plugin.Version);
+            Assert.Equal("Shikimori Next", fixture.Plugin.Name);
             Assert.Equal("Shikimori", ShikimoriPlugin.ProviderId);
             Assert.Equal("Jellyfin.Plugin.Shikimori.xml", fixture.Plugin.ConfigurationFileName);
 

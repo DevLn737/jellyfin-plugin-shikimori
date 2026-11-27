@@ -1,7 +1,7 @@
 ---
-name: "Shikimori"
-guid: "7edb2a28-5b8a-4fe8-ae11-d941315eb862"
-version: "6.0.0.0"
+name: "Shikimori Next"
+guid: "42730b4b-b30e-45dc-bee0-8f351eadb690"
+version: "6.1.0.0"
 targetAbi: "12.2.0.0"
 framework: "net10.0"
 owner: "DevLn737"

@@ -13,12 +13,15 @@
 
 # Установка
 
+Этот форк публикуется как **Shikimori Next** в репозитории
+[jellyfin-plugins](https://github.com/DevLn737/jellyfin-plugins).
+
 1. Зайти в Администрирование -> Панель управления -> Плагины -> Управление репозиториями -> Новый репозиторий.
 2. Ввести название, в поле "URL репозитория" ввести:
 ```
-https://raw.githubusercontent.com/DevLn737/jellyfin-plugin-shikimori/main/manifest.json
+https://devln737.github.io/jellyfin-plugins/manifest.json
 ```
-3. Установить плагин через каталог.
+3. Установить Shikimori Next через каталог.
 
 # Сборка
 
@@ -31,17 +34,20 @@ dotnet publish Jellyfin.Plugin.Shikimori/Jellyfin.Plugin.Shikimori.csproj --conf
 4. Создать директорию `shikimori` в папке с плагинами джелифина (Она находится в [основной директории jellyfin](https://jellyfin.org/docs/general/administration/configuration/#data-directory))
 5. Переместить `Jellyfin.Plugin.Shikimori.dll`, `Newtonsoft.Json.dll` и `meta.json` из `artifacts/publish` в созданную директорию. Остальные DLL из publish принадлежат серверу и не входят в пакет плагина.
 
-# Совместимость 12.2
+# Shikimori Next и Jellyfin 12.2
 
-Версия 6.0.0.0 предназначена для Jellyfin 12.2 и .NET 10. Она сохраняет GUID,
-ключи настроек, имя `Jellyfin.Plugin.Shikimori.xml`, поиск по Shikimori ID и
-сохранение идентификаторов других провайдеров из версии 5.0.1.0. Перед заменой
-бинарников остановить Jellyfin; сохранить файл настроек в `plugins/configurations`
-и убрать старую директорию бинарников Shikimori.
+Версия 6.1.0.0 предназначена для Jellyfin 12.2 и .NET 10. С версии 6.1.0.0 у
+плагина своё имя и GUID: **Shikimori Next**, `42730b4b-b30e-45dc-bee0-8f351eadb690`,
+поэтому в каталоге сервера он не конфликтует с оригинальным Shikimori. Всё, от чего
+зависит библиотека, осталось прежним: провайдер метаданных по-прежнему называется
+`Shikimori`, у элементов сохраняются идентификаторы `Shikimori`, настройки лежат в
+`plugins/configurations/Jellyfin.Plugin.Shikimori.xml`.
 
-Публичный `manifest.json` содержит только опубликованные релизы. Локальную сборку
-6.0.0.0 устанавливать из проверенного пакета. Добавлять её в публичный каталог
-можно после публикации ZIP и проверки его адреса и контрольной суммы.
+Переход с оригинального плагина (или с версии 6.0.0.0 и старше этого форка):
+удалить Shikimori в Панели управления -> Плагины, перезапустить Jellyfin,
+установить Shikimori Next из каталога и перезапустить ещё раз. Настройки
+библиотек, сохранённые ID и настройки плагина сохраняются. Не держать оба плагина
+одновременно: они регистрируют один и тот же провайдер.
 
 Проверенные команды тестирования:
 
@@ -49,6 +55,6 @@ dotnet publish Jellyfin.Plugin.Shikimori/Jellyfin.Plugin.Shikimori.csproj --conf
 dotnet test Jellyfin.Plugin.Shikimori.sln --configuration Release
 ```
 
-Тесты проверяют восстановление старых XML-настроек, поиск ID, неизменность GUID и
-имени настроек, обработку метаданных и результатов поиска фильмов/сериалов без
+Тесты проверяют восстановление старых XML-настроек, поиск ID, GUID и
+имя файла настроек, обработку метаданных и результатов поиска фильмов/сериалов без
 потери TMDb, TVDB, AniList, AniDB, IMDb и пользовательских идентификаторов.
